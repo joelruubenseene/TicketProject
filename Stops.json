@@ -1,0 +1,524 @@
+[
+	{
+		"stop_name": "Aardla",
+		"stop_area_id": "64-5924-1"
+	},
+	{
+		"stop_name": "Aegviidu",
+		"stop_area_id": "64-5924-2"
+	},
+	{
+		"stop_name": "Aruküla",
+		"stop_area_id": "64-5924-3"
+	},
+	{
+		"stop_name": "Elva",
+		"stop_area_id": "64-5924-4"
+	},
+	{
+		"stop_name": "Hagudi",
+		"stop_area_id": "64-5924-5"
+	},
+	{
+		"stop_name": "Hiiu",
+		"stop_area_id": "64-5924-6"
+	},
+	{
+		"stop_name": "Holvandi",
+		"stop_area_id": "64-5924-7",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Ilumetsa",
+		"stop_area_id": "64-5924-8",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Jaanika",
+		"stop_area_id": "64-5924-9",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Jäneda",
+		"stop_area_id": "64-5924-12",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Järve",
+		"stop_area_id": "64-5924-13"
+	},
+	{
+		"stop_name": "Jõgeva",
+		"stop_area_id": "64-5924-10"
+	},
+	{
+		"stop_name": "Jõhvi",
+		"stop_area_id": "64-5924-11"
+	},
+	{
+		"stop_name": "Kaarepere",
+		"stop_area_id": "64-5924-14"
+	},
+	{
+		"stop_name": "Kabala",
+		"stop_area_id": "64-5924-15",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Kadrina",
+		"stop_area_id": "64-5924-16"
+	},
+	{
+		"stop_name": "Kärevere",
+		"stop_area_id": "64-5924-38",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Kärkna",
+		"stop_area_id": "64-5924-39",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Käru",
+		"stop_area_id": "64-5924-40",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Kasemetsa",
+		"stop_area_id": "64-5924-17"
+	},
+	{
+		"stop_name": "Keava",
+		"stop_area_id": "64-5924-18"
+	},
+	{
+		"stop_name": "Keeni",
+		"stop_area_id": "64-5924-19",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Kehra",
+		"stop_area_id": "64-5924-20"
+	},
+	{
+		"stop_name": "Keila",
+		"stop_area_id": "64-5924-21"
+	},
+	{
+		"stop_name": "Kibuna",
+		"stop_area_id": "64-5924-22"
+	},
+	{
+		"stop_name": "Kiidjärve",
+		"stop_area_id": "64-5924-23",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Kiisa",
+		"stop_area_id": "64-5924-24"
+	},
+	{
+		"stop_name": "Kiltsi",
+		"stop_area_id": "64-5924-25"
+	},
+	{
+		"stop_name": "Kirsi",
+		"stop_area_id": "64-5924-26"
+	},
+	{
+		"stop_name": "Kitseküla",
+		"stop_area_id": "64-5924-27"
+	},
+	{
+		"stop_name": "Kivimäe",
+		"stop_area_id": "64-5924-28"
+	},
+	{
+		"stop_name": "Kiviõli",
+		"stop_area_id": "64-5924-29"
+	},
+	{
+		"stop_name": "Klooga",
+		"stop_area_id": "64-5924-30"
+	},
+	{
+		"stop_name": "Klooga-Aedlinn",
+		"stop_area_id": "64-5924-31"
+	},
+	{
+		"stop_name": "Kloogaranna",
+		"stop_area_id": "64-5924-32"
+	},
+	{
+		"stop_name": "Kohila",
+		"stop_area_id": "64-5924-33"
+	},
+	{
+		"stop_name": "Kohtla-Nõmme",
+		"stop_area_id": "64-5924-34",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Koidula",
+		"stop_area_id": "64-5924-35"
+	},
+	{
+		"stop_name": "Kulli",
+		"stop_area_id": "64-5924-36",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Kulna",
+		"stop_area_id": "64-5924-37",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Laagri",
+		"stop_area_id": "64-5924-41"
+	},
+	{
+		"stop_name": "Lagedi",
+		"stop_area_id": "64-5924-42"
+	},
+	{
+		"stop_name": "Lahinguvälja",
+		"stop_area_id": "64-5924-43",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Laitse",
+		"stop_area_id": "64-5924-44"
+	},
+	{
+		"stop_name": "Laoküla",
+		"stop_area_id": "64-5924-45",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Lehtse",
+		"stop_area_id": "64-5924-46"
+	},
+	{
+		"stop_name": "Lelle",
+		"stop_area_id": "64-5924-47"
+	},
+	{
+		"stop_name": "Liiva",
+		"stop_area_id": "64-5924-48"
+	},
+	{
+		"stop_name": "Lilleküla",
+		"stop_area_id": "64-5924-49"
+	},
+	{
+		"stop_name": "Lohu",
+		"stop_area_id": "64-5924-50"
+	},
+	{
+		"stop_name": "Mägiste",
+		"stop_area_id": "64-5924-52",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Männiku",
+		"stop_area_id": "64-5924-53"
+	},
+	{
+		"stop_name": "Mustjõe",
+		"stop_area_id": "64-5924-51",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Narva",
+		"stop_area_id": "64-5924-54"
+	},
+	{
+		"stop_name": "Nelijärve",
+		"stop_area_id": "64-5924-55",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Niitvälja",
+		"stop_area_id": "64-5924-56"
+	},
+	{
+		"stop_name": "Nõmme",
+		"stop_area_id": "64-5924-57"
+	},
+	{
+		"stop_name": "Nõo",
+		"stop_area_id": "64-5924-58"
+	},
+	{
+		"stop_name": "Ollepa",
+		"stop_area_id": "64-5924-59",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Olustvere",
+		"stop_area_id": "64-5924-60"
+	},
+	{
+		"stop_name": "Orava",
+		"stop_area_id": "64-5924-61",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Oru",
+		"stop_area_id": "64-5924-62",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Pääsküla",
+		"stop_area_id": "64-5924-72"
+	},
+	{
+		"stop_name": "Padula",
+		"stop_area_id": "64-5924-63",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Paldiski",
+		"stop_area_id": "64-5924-64"
+	},
+	{
+		"stop_name": "Palupera",
+		"stop_area_id": "64-5924-65",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Parila",
+		"stop_area_id": "64-5924-66",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Pedja",
+		"stop_area_id": "64-5924-67",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Peedu",
+		"stop_area_id": "64-5924-68"
+	},
+	{
+		"stop_name": "Piusa",
+		"stop_area_id": "64-5924-120",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Põllküla",
+		"stop_area_id": "64-5924-70",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Põlva",
+		"stop_area_id": "64-5924-71"
+	},
+	{
+		"stop_name": "Puka",
+		"stop_area_id": "64-5924-69"
+	},
+	{
+		"stop_name": "Püssi",
+		"stop_area_id": "64-5924-73"
+	},
+	{
+		"stop_name": "Raasiku",
+		"stop_area_id": "64-5924-74"
+	},
+	{
+		"stop_name": "Rahumäe",
+		"stop_area_id": "64-5924-75"
+	},
+	{
+		"stop_name": "Rakke",
+		"stop_area_id": "64-5924-76"
+	},
+	{
+		"stop_name": "Rakvere",
+		"stop_area_id": "64-5924-77"
+	},
+	{
+		"stop_name": "Rapla",
+		"stop_area_id": "64-5924-78"
+	},
+	{
+		"stop_name": "Rebase",
+		"stop_area_id": "64-5924-79",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Reola",
+		"stop_area_id": "64-5924-80",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Riisipere",
+		"stop_area_id": "64-5924-81"
+	},
+	{
+		"stop_name": "Roobuka",
+		"stop_area_id": "64-5924-82"
+	},
+	{
+		"stop_name": "Ropka",
+		"stop_area_id": "64-5924-83"
+	},
+	{
+		"stop_name": "Ruusa",
+		"stop_area_id": "64-5924-84",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Saku",
+		"stop_area_id": "64-5924-85"
+	},
+	{
+		"stop_name": "Sangaste",
+		"stop_area_id": "64-5924-86"
+	},
+	{
+		"stop_name": "Saue",
+		"stop_area_id": "64-5924-87"
+	},
+	{
+		"stop_name": "Sonda",
+		"stop_area_id": "64-5924-88",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Sürgavere",
+		"stop_area_id": "64-5924-89",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Tabivere",
+		"stop_area_id": "64-5924-90"
+	},
+	{
+		"stop_name": "Taevaskoja",
+		"stop_area_id": "64-5924-91",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Taikse",
+		"stop_area_id": "64-5924-92",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Tallinn",
+		"stop_area_id": "64-5924-93"
+	},
+	{
+		"stop_name": "Tallinn-Väike",
+		"stop_area_id": "64-5924-94"
+	},
+	{
+		"stop_name": "Tamsalu",
+		"stop_area_id": "64-5924-95"
+	},
+	{
+		"stop_name": "Tapa",
+		"stop_area_id": "64-5924-96"
+	},
+	{
+		"stop_name": "Tartu",
+		"stop_area_id": "64-5924-97"
+	},
+	{
+		"stop_name": "Tondi",
+		"stop_area_id": "64-5924-98"
+	},
+	{
+		"stop_name": "Tõravere",
+		"stop_area_id": "64-5924-99"
+	},
+	{
+		"stop_name": "Turba",
+		"stop_area_id": "64-5924-119"
+	},
+	{
+		"stop_name": "Türi",
+		"stop_area_id": "64-5924-100"
+	},
+	{
+		"stop_name": "Uhti",
+		"stop_area_id": "64-5924-101",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Ülemiste",
+		"stop_area_id": "64-5924-117"
+	},
+	{
+		"stop_name": "Ülenurme",
+		"stop_area_id": "64-5924-118",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Urda",
+		"stop_area_id": "64-5924-102"
+	},
+	{
+		"stop_name": "Vägeva",
+		"stop_area_id": "64-5924-116",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Vaivara",
+		"stop_area_id": "64-5924-103",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Valdeku",
+		"stop_area_id": "64-5924-104"
+	},
+	{
+		"stop_name": "Valga",
+		"stop_area_id": "64-5924-105"
+	},
+	{
+		"stop_name": "Valgemetsa",
+		"stop_area_id": "64-5924-106",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Valingu",
+		"stop_area_id": "64-5924-107"
+	},
+	{
+		"stop_name": "Vana-Kuuste",
+		"stop_area_id": "64-5924-108",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Vasalemma",
+		"stop_area_id": "64-5924-109"
+	},
+	{
+		"stop_name": "Vastse-Kuuste",
+		"stop_area_id": "64-5924-110",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Veriora",
+		"stop_area_id": "64-5924-111"
+	},
+	{
+		"stop_name": "Vesse",
+		"stop_area_id": "64-5924-112",
+		"stop_type": "S"
+	},
+	{
+		"stop_name": "Vilivere",
+		"stop_area_id": "64-5924-113"
+	},
+	{
+		"stop_name": "Viljandi",
+		"stop_area_id": "64-5924-114"
+	},
+	{
+		"stop_name": "Võhma",
+		"stop_area_id": "64-5924-115"
+	}
+]
