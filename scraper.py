@@ -16,8 +16,10 @@ Show both side-by-side --> Elron | LuxExpress (if applicable)
 """
 
 import json
+from datetime import date, datetime, timezone, timedelta
+
 import requests
-import datetime
+from tabulate import tabulate
 
 
 def stop_id(stop_location):
@@ -35,12 +37,12 @@ def stop_id(stop_location):
         print("Incorrect input")
 
 
-def api_query(origin_id, destination_id, date):
+def api_query(origin_stop_id, destination_stop_id, date):
     """
     Queries the Ridango API for the train times between 2 stops
 
-    :param origin_id: Origin Stop ID
-    :param destination_id: Destination stop ID
+    :param origin_stop_id: Origin Stop ID
+    :param destination_stop_id: Destination stop ID
     :param date: Trip date
     :return: API response in JSON
 
@@ -51,8 +53,8 @@ def api_query(origin_id, destination_id, date):
 
     payload = json.dumps({
         "date": str(date),
-        "origin_stop_area_id": str(origin_id),
-        "destination_stop_area_id": str(destination_id),
+        "origin_stop_area_id": str(origin_stop_id),
+        "destination_stop_area_id": str(destination_stop_id),
         "channel": "web"
     })
 
@@ -74,34 +76,62 @@ def api_query(origin_id, destination_id, date):
     }
 
     response = requests.request("PUT", url, headers=headers, data=payload).json()
+
     return response
+
+
+def get_trip_info(response: json, output: list, time=None):
+    """
+    Function to process the API response
+
+    :param response: Response from the API in JSON
+    :param output: List of the times and prices
+    :param time: "Current time" if specified
+    :return:
+    """
+    for journey in response["journeys"]:
+        for trip in journey["trips"]:
+            arrival_time = datetime.fromisoformat(trip["arrival_time"]) \
+                .replace(tzinfo=timezone(offset=timedelta()))  # Needed for comparison, timezone def
+            departure_time = datetime.fromisoformat(trip["departure_time"]) \
+                .replace(tzinfo=timezone(offset=timedelta()))  # Needed for comparison, timezone def
+
+            price = str(trip["product"]["price"]) + '\u20AC'  # Get the price info, add '€' as unicode
+
+            if time and time < departure_time:  # If a time to compare to has been supplied
+                formatted_departure = datetime.strftime(departure_time, '%H:%M') \
+                                      + ' - ' \
+                                      + datetime.strftime(arrival_time, '%H:%M')
+                departure = [formatted_departure, price]
+
+            else:  # Show all, since no time to start from has been given
+                formatted_departure = datetime.strftime(departure_time, '%H:%M') \
+                                      + ' - ' \
+                                      + datetime.strftime(arrival_time, '%H:%M')
+                departure = [formatted_departure, price]
+
+            output.append(departure)
+
+    return output
 
 
 if __name__ == '__main__':
 
-    start = input("Input starting stop: ")
+    origin = input("Input starting stop: ")
     destination = input("Input destination: ")
-    date = input("Input date as YYYY-MM-DD (leave empty for today): ")
+    input_date = input("Input date as YYYY-MM-DD (leave empty for today): ")
 
-    if date == '':  # If the input is empty, add current date (YYYY-MM-DD)
-        date = str(datetime.date.today())
+    if input_date == '':  # If the input is empty, add current date (YYYY-MM-DD)
+        input_date = str(date.today())
 
-    origin = stop_id(start)  # "64-5924-93"
-    destination = stop_id(destination)  # "64-5924-97"
+    origin_id = stop_id(origin)  # "64-5924-93"
+    destination_id = stop_id(destination)  # "64-5924-97"
 
-    api_response = api_query(origin, destination, date)
-    # print(json.dumps(response, indent=4, sort_keys=True))
-    for journey in api_response["journeys"]:
-        for trip in journey["trips"]:
-            arrival_time = trip["arrival_time"]
-            departure_time = trip["departure_time"]
-            origin_stop_name = trip["origin_stop_name"]
-            destination_stop_name = trip["destination_stop_name"]
-            price = trip["product"]["price"]
+    api_response = api_query(origin_id, destination_id, input_date)
+    result = []
+    current_time = datetime.now().replace(tzinfo=timezone(offset=timedelta()))
 
-            # Print the extracted information
-            print(origin_stop_name + '-' + destination_stop_name)
-            print(datetime.datetime.fromisoformat(departure_time).strftime("%H:%M") + '-' \
-                  + datetime.datetime.fromisoformat(arrival_time).strftime("%H:%M"))
-            print("Price:", price)
-            print()
+    get_trip_info(api_response, result)
+
+    print(f"\n{origin} --> {destination}")
+    print(tabulate(result, tablefmt="grid"))
