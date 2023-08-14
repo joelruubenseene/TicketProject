@@ -1,6 +1,6 @@
 # TicketProject
 
-A CLI-based tool to check Elron (<https://elron.ee>) trains' timetable and prices between 2 stops
+A CLI-based tool to check and compare Elron (https://elron.ee) trains' and LuxExpress (https://luxexpress.eu) buses' timetables and prices between 2 stops.
 
 ## Usage
 
