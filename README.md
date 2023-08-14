@@ -2,6 +2,8 @@
 
 A CLI-based tool to check and compare Elron (https://elron.ee) trains' and LuxExpress (https://luxexpress.eu) buses' timetables and prices between 2 stops.
 
+## Status: Active
+
 ## Usage
 
 ```
