@@ -168,6 +168,8 @@ def main():
     origin = find_stop_id(start_bus_stop, stops_dict)
     destination = find_stop_id(destination_bus_stop, stops_dict)
 
+#TODO: Move the time part after querying, then filter by departure_datetime
+
     if show_all_options == 'Y':
         result = query_lux_express(input_date, origin, destination, no_of_persons)
     else:
