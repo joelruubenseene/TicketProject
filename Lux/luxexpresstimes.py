@@ -1,52 +1,9 @@
 import requests
-import json
-
-#TODO: User Input!!!
-#TODO: Finish docstrings
-#TODO: Comments
-#TODO: Figure out whether or not to remove unused code/printing to file
-#TODO: Tabulate
+from tabulate import tabulate
+from datetime import datetime, timezone
 
 
-date = "2023-08-22"
-start_bus_stop = "Tallinn"
-destination_bus_stop = "Tartu"
-no_of_persons = 1
-
-# List of most bigger stops on LuxExpress lines, compiled over time with... heuristics and stuff (manually)
-stops_dict = {
-    "Tallinn": 17028,
-    "Tartu": 17058,
-    "Riga": 18859,
-    "Riga Airport": 18860,
-    "Pärnu": 8723,
-    "Viljandi": 12661,
-    "Võru": 10527,
-    "Narva": 16404,
-    "Kuresaare": 7800,
-    "Haapsalu": 8533,
-    "Vilnius": 18862,
-    "Warsaw": 18925,
-    "St. Petersburg": 18880,
-    "Kaunas": 18921,
-    "Helsinki": 21874,
-    "Suwalki": 23752
-}
-
-
-def find_stop_id(location: str, dict_of_stops: dict):
-    """
-    Find the stopID of a bus stop at a location
-
-    location - String of the location, gets stripped and capitalized
-    dict_of_stops - dictionary containing location:id pairs
-
-    returns the id of the stop to be used in a query
-    """
-    return dict_of_stops.get(location)
-
-
-def query_lux_express(date, origin_stop, destination_stop, persons: int):
+def query_lux_express(trip_date, origin_stop, destination_stop, persons: int):
     """
     Performs the GraphQL query to LuxExpress API to get the routes between the stops
 
@@ -70,7 +27,7 @@ def query_lux_express(date, origin_stop, destination_stop, persons: int):
         'platform': 'web-next',
         'pragma': 'no-cache',
         'referer': 'https://luxexpress.eu/tickets/search/?promocode=&departDate' + str(
-            date) + '&currency=EUR&fromBusStopId=' + str(origin_stop) + '&toBusStopId=' + str(
+            trip_date) + '&currency=EUR&fromBusStopId=' + str(origin_stop) + '&toBusStopId=' + str(
             destination_stop) + '&passengers=' + str(
             persons) + '&affiliateId=',
         'sec-ch-ua': '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
@@ -84,7 +41,7 @@ def query_lux_express(date, origin_stop, destination_stop, persons: int):
 
     data = {
         "variables": {
-            "departureDate": date,
+            "departureDate": trip_date,
             "originBusStopId": origin_stop,
             "destinationBusStopId": destination_stop,
             "currency": "CURRENCY.EUR",
@@ -131,45 +88,99 @@ def query_lux_express(date, origin_stop, destination_stop, persons: int):
     return result
 
 
-origin = find_stop_id(start_bus_stop, stops_dict)
-destination = find_stop_id(destination_bus_stop, stops_dict)
-
-response = query_lux_express(date, origin, destination, 1)
-print(f"Status: {response.status_code}\n")
-print(f"Trip: {origin} --> {destination}\n")
-
-if response.status_code == 200:
-    response_json = response.json()
-    #    with open("response.json", "w") as json_file:
-    #        json.dump(response_json, json_file, indent=4)
-    #    print("\nJSON response saved to 'response.json'")
-    # else:
-    #    print("Request failed with status code:", response.status_code)
-
-    # with open("response.json", "r") as file:
-    #    json_data = file.read()
-    #    data = json.loads(json_data)
-    search_results = response_json["data"]["search"]
-
-for journey in search_results:
-    duration = journey["Duration"]
-    available_regular_seats = journey["AvailableRegularSeats"]
-    regular_price = journey["RegularPrice"]
-    departure_datetime = journey["DepartureDateTime"]
-    arrival_datetime = journey["ArrivalDateTime"]
-    available_business_class_seats = journey.get("AvailableBusinessClassSeats", None)
-    business_class_price = journey.get("BusinessClassPrice", None)
-    is_for_sale = journey["IsForSale"]
-
+def print_result(api_response):
     format_price = lambda price: f"{price}€" if price is not None else "N/A"
+    format_time = lambda datetime_str: datetime_str.split('T')[1][:5]
+    # format_duration = lambda time_str: time_str[:5]
 
-    if is_for_sale:
-        # Print or process the extracted information as needed
-        print("Duration:", duration)
-        print("Available Regular Seats:", available_regular_seats)
-        print(f"Regular Price: {format_price(regular_price)}")
-        print("Departure Date and Time:", departure_datetime)
-        print("Arrival Date and Time:", arrival_datetime)
-        print("Available Business Class Seats:", available_business_class_seats)
-        print(f"Business Class Price: {format_price(business_class_price)}")
-        print("=" * 46)  # Separating lines for clarity
+    table_data = []
+
+    for journey in api_response:
+        available_regular_seats = journey["AvailableRegularSeats"]
+        regular_price = format_price(journey["RegularPrice"])
+        departure_datetime = format_time(journey["DepartureDateTime"])
+        arrival_datetime = format_time(journey["ArrivalDateTime"])
+        available_business_class_seats = journey.get("AvailableBusinessClassSeats", None)
+        business_class_price = format_price(journey.get("BusinessClassPrice", None))
+        is_for_sale = journey["IsForSale"]
+
+        if is_for_sale:
+            table_data.append([
+                departure_datetime,
+                arrival_datetime,
+                available_regular_seats,
+                regular_price,
+                available_business_class_seats,
+                business_class_price,
+            ])
+
+    print(tabulate(table_data, tablefmt="grid"))
+
+
+def get_valid_input(prompt):
+    """
+    Find the stopID of a bus stop at a location
+    """
+    while True:
+        user_input = input(prompt)
+        if user_input.strip():
+            return user_input
+
+
+def find_stop_id(stop_name, stops_dict):
+    stop_id = stops_dict.get(stop_name)
+    if stop_id is None:
+        raise ValueError(f"Stop '{stop_name}' not found.")
+    return stop_id
+
+
+def main():
+    # List of most bigger stops on LuxExpress lines, compiled over time with... heuristics and stuff (manually)
+    stops_dict = {
+        "Tallinn": 17028,
+        "Tartu": 17058,
+        "Riga": 18859,
+        "Riga Airport": 18860,
+        "Pärnu": 8723,
+        "Viljandi": 12661,
+        "Võru": 10527,
+        "Narva": 16404,
+        "Kuresaare": 7800,
+        "Haapsalu": 8533,
+        "Vilnius": 18862,
+        "Warsaw": 18925,
+        "St. Petersburg": 18880,
+        "Kaunas": 18921,
+        "Helsinki": 21874,
+        "Suwalki": 23752
+    }
+
+    start_bus_stop = get_valid_input("Input starting stop: ")
+    destination_bus_stop = get_valid_input("Input destination: ")
+    input_date = input("Input date as YYYY-MM-DD: ")
+    no_of_persons = int(get_valid_input("Input number of travellers: "))
+
+    show_all_options = ''
+    if not input_date:
+        show_all_options = input("Show all trips today? (Y/N) ").capitalize()
+        input_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    origin = find_stop_id(start_bus_stop, stops_dict)
+    destination = find_stop_id(destination_bus_stop, stops_dict)
+
+    if show_all_options == 'Y':
+        result = query_lux_express(input_date, origin, destination, no_of_persons)
+    else:
+        future_date = str(datetime.strptime(input_date, "%Y-%m-%d").replace(tzinfo=timezone.utc).strftime("%Y-%m-%d"))
+        result = query_lux_express(future_date, origin, destination, no_of_persons)
+
+    if result.status_code == 200:
+        response_json = result.json()
+        search_results = response_json["data"]["search"]
+
+        print(f"Trip: {start_bus_stop} --> {destination_bus_stop}\n")
+        print_result(search_results)
+
+
+if __name__ == "__main__":
+    main()
