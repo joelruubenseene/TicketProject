@@ -16,7 +16,7 @@ Show both side-by-side --> Elron | LuxExpress (if applicable)
 """
 
 from json import load, dumps
-from datetime import date, datetime, timezone, timedelta
+from datetime import date, datetime, timezone
 
 from requests import request
 from tabulate import tabulate
