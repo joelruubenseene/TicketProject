@@ -5,6 +5,7 @@ import json
 #TODO: Finish docstrings
 #TODO: Comments
 #TODO: Figure out whether or not to remove unused code/printing to file
+#TODO: Tabulate
 
 
 date = "2023-08-22"
@@ -35,20 +36,26 @@ stops_dict = {
 
 def find_stop_id(location: str, dict_of_stops: dict):
     """
+    Find the stopID of a bus stop at a location
 
-    :rtype: int
+    location - String of the location, gets stripped and capitalized
+    dict_of_stops - dictionary containing location:id pairs
+
+    returns the id of the stop to be used in a query
     """
     return dict_of_stops.get(location)
 
 
 def query_lux_express(date, origin_stop, destination_stop, persons: int):
     """
+    Performs the GraphQL query to LuxExpress API to get the routes between the stops
 
-    :param date:
-    :param origin_stop:
-    :param destination_stop:
-    :param persons:
-    :return:
+    date: date for the trip as YYYY-MM-DD
+    origin_stop: Stop ID for the origin
+    destination_stop: Stop ID for the destination
+    persons: Number of persons travelling
+
+    Returns a requests object containing JSON
     """
     url = 'https://luxexpress.eu/graphql'
 
